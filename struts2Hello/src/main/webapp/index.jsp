@@ -1,0 +1,5 @@
+<html>
+<body>
+<h2>Welcome ${username}</h2>
+</body>
+</html>
