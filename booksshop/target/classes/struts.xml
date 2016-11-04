@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="lold" extends="struts-default">
+		<interceptors>
+			<interceptor name="logs" class="com.interceptot.LoginInterceptot"></interceptor>
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="logs" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="addre" class="com.actionshop.AddressAction">
+			<result name="oldPlace">oldPlace.jsp</result>
+			<result name="newPlace">dizhi.jsp</result>
+		</action>
+
+		<action name="login2" class="com.actionshop.loginAction">
+			<result name="index">index.jsp</result>
+			<result name="login">logins.jsp</result>
+		</action>
+		<action name="logins">
+			<result>logins.jsp</result>
+		</action>
+
+		<action name="login" class="com.actionshop.loginAction">
+			<result name="index" type="chain">addre</result>
+			<result name="login">login.jsp</result>
+		</action>
+		<action name="jiesuan" class="com.actionshop.CarAction" method="insertcu">
+			<result name="insert" type="chain">addre</result>
+			<result name="login">/login.jsp</result>
+			<interceptor-ref name="mydefault"></interceptor-ref>
+		</action>
+
+
+		<action name="index" class="com.actionshop.IndexAction">
+			<result name="index2">index.jsp</result>
+		</action>
+		<action name="item" class="com.actionshop.ItemAction">
+			<result name="item">item.jsp</result>
+		</action>
+		<action name="jia" class="com.actionshop.CarAction" method="insert">
+			<result name="insert">/go.jsp</result>
+		</action>
+		<action name="mai" class="com.actionshop.CarAction" method="insert">
+			<result name="insert" type="chain">addre</result>
+			<result name="login">/login.jsp</result>
+			<interceptor-ref name="mydefault"></interceptor-ref>
+		</action>
+		<action name="shopcarGo" class="com.actionshop.GoAction"
+			method="insert">
+			<result name="i">/liulan.jsp</result>
+		</action>
+		<action name="shopdelete" class="com.actionshop.GoAction"
+			method="delete">
+			<result name="r" type="redirect">/shopcarGo</result>
+		</action>
+
+		<!--新添加action -->
+		<action name="chaxun" class="com.actionshop.SelectBooksAction">
+			<result name="dccx">selectBooks.jsp</result>
+		</action>
+		<action name="fenlei" class="com.actionshop.ClassifyAction">
+			<result name="fenleicx">fenlei.jsp</result>
+		</action>
+		<action name="books" class="com.actionshop.SelectAllBooksAction"
+			method="execute">
+			<result name="execute">/fenye.jsp</result>
+		</action>
+
+		<action name="oldAddress" class="com.actionshop.OldAddressAction">
+			<result name="oldAdd">/order.jsp</result>
+		</action>
+		<action name="newAddress" class="com.actionshop.DizhiAction">
+			<result name="newAdd">/order.jsp</result>
+		</action> 
+		<action name="pay" class="com.actionshop.PayAction">
+			<result name="success" type="chain">index</result>
+		</action>
+	</package>
+
+</struts>
