@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://
+mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="edu.cn.qdc">
+
+	<select id="getCourse" parameterType="int" resultMap="getCourseMap"> 
+		select * from course c, teacher t where c.teacher_id=t.id and c.id=#{id} </select>
+
+	 <resultMap type="edu.cn.qdc.Course" id="getCourseMap">
+		<id property="id" column="id" />
+		<result property="coursename" column="courseName" />
+		<association property="teacher" javaType="edu.cn.qdc.Teacher" column="teacher_id">
+			<id property="teacherid" column="id" />
+			<result property="teachername" column="teacherName" />
+		</association>
+	</resultMap>
+</mapper> -->
+
+	<mapper namespace="edu.cn.qdc.UserInfo">
+		<select id="getCourse" parameterType="int" resultMap="getCourseMap"> 
+			select * from course c, teacher t where c.teacher_id=t.id and c.id=#{id} 
+		</select>
+
+		<resultMap type="edu.cn.qdc.Course" id="getCourseMap">
+			<id property="id" column="id" />
+			<result property="coursename" column="courseName" />
+			<association property="teacher" javaType="edu.cn.qdc.Teacher" column="teacher_id">
+				<id property="teacherid" column="id" />
+				<result property="teachername" column="teacherName" />
+		    </association>
+		</resultMap>
+	</mapper>

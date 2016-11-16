@@ -35,4 +35,9 @@ public class User {
 	public void setCorp(String corp) {
 		this.corp = corp;
 	}
+	public User(String username, String corp) {
+		super();
+		this.username = username;
+		this.corp = corp;
+	}
 }

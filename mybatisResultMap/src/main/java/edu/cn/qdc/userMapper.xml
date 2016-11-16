@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://
+mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cn.qdc.UserInfo">
+
+	<!-- <select id="getUser" parameterType="int" resultMap="UserMap">
+		select u.id
+		as userId,userName,courseName,corp,c.id as courseId,teacher.id as
+		teacherId,teacherName from user u left
+		join
+		userCourse uc on u.id
+		=uc.user_id left join course c on c.id =
+		uc.course_id left join teacher
+		on teacher.id = c.teacher_id where u.id
+		= #{id}
+	</select>
+
+	<resultMap id="UserMap"
+		type="edu.cn.qdc.User">
+		<constructor>
+			<idArg column="userId" javaType="int" />
+			<arg column="userName" javaType="String" />
+			<arg column="corp" javaType="String" />
+		</constructor>
+		<collection property="courses"
+			ofType="edu.cn.qdc.Course">
+			<id property="id" column="courseId" />
+			<result property="coursename" column="courseName" />
+			<association property="teacher" column="teacher_id"
+				javaType="edu.cn.qdc.Teacher">
+				<id property="id" column="teacherId" />
+				<result property="teachername" column="teacherName" />
+			</association>
+		</collection>
+	</resultMap> -->
+	
+	
+	<select id="getUser" parameterType="int" resultMap="UserMap">
+		select * from user where id=#{id}
+	</select>
+	
+	<resultMap type="User" id="UserMap">
+		<id property="id" column="id"/>
+		<result property="username" column="userName"/>
+	</resultMap>
+	
+	
+</mapper>
