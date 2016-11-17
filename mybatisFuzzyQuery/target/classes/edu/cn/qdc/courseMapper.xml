@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://
+mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cn.qdc.CourseInf">
+	<select id="getCourse" parameterType="String" resultMap="getCourses">
+		<!-- the third method -->
+		<!-- select * from course where courseName like '%${_parameter}%' -->
+
+		<!-- the first method -->
+		<!-- select * from course where courseName like CONCAT(CONCAT('%', #{coursename}), 
+			'%') -->
+
+		<!-- the second method -->
+		<!-- select * from course where <if test="_parameter!=null"> courseName 
+			like #{_parameter} </if> -->
+	</select>
+	<resultMap type="edu.cn.qdc.Course" id="getCourses">
+		<id property="id" column="id" />
+		<result property="coursename" column="courseName" />
+	</resultMap>
+</mapper>
