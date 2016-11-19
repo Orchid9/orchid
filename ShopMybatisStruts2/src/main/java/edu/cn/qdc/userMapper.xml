@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://
+mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cn.qdc.GetDataInf">
+
+	<!-- 查询用户数据 -->
+	<select id="getUser" parameterType="String" resultMap="getUserr">
+		select username,password,userType from person where userName=#{0} and password=#{1}
+	</select>
+	<resultMap type="edu.cn.qdc.User" id="getUserr">
+			<result property="username" column="userName" />
+			<result property="password" column="password" />
+			<result property="usertype" column="userType" />
+	</resultMap>
+	
+	
+	<!-- 插入商家添加商品信息 -->
+	<insert id="addContent" parameterType="edu.cn.qdc.Contents"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into content(price,title,icon,abstract,text)values(#{price},#{title},#{image},#{summary},#{detail})
+	</insert>
+	 
+	 <!-- 商家更新商品信息到数据库 -->
+	 <update id="updateContent" parameterType="edu.cn.qdc.Contents"> 
+		update content set price=#{price},title = #{title},icon = #{image},abstract = #{summary},text = #{detail}
+		 where icon = #{image}
+	</update>
+	 
+	 
+</mapper>
