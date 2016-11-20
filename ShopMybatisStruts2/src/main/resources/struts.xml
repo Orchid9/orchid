@@ -6,33 +6,18 @@
 <struts>
 	<package name="lold" extends="struts-default">
 
-		<action name="login" class="edu.cn.qdc.action.LoginAction">
-			<result name="querysuccess">index.jsp</result>
-			<result name="queryerror">login.jsp</result>
+		<!-- *包含了public、index、account、show -->
+		<action name="*">
+			<result>{1}.jsp</result>
 		</action>
 
-		<!-- <action name="*">
-			<result>{1}.jsp</result>
-		</action> -->
-		
 		<action name="publicSubmit" class="edu.cn.qdc.action.PublicSubmitAction">
 			<result name="publicSubmitSuccess">publicSubmit.jsp</result>
 		</action>
-		
-		<action name="public">
-			<result>public.jsp</result>
-		</action>
-		
-		<action name="index">
-			<result>index.jsp</result>
-		</action>
-		
-		<action name="account">
-			<result>account.jsp</result>
-		</action>
-		
-		<action name="show">
-			<result>show.jsp</result>
+
+		<action name="login" class="edu.cn.qdc.action.LoginAction">
+			<result name="querysuccess">index.jsp</result>
+			<result name="queryerror">login.jsp</result>
 		</action>
 
 		<action name="edit" class="edu.cn.qdc.action.EditAction">
@@ -40,14 +25,9 @@
 			<result name="editerror">authority.jsp</result>
 		</action>
 
-		<action name="authority">
-			<result>show.jsp</result>
-		</action>
-
 		<action name="editSubmit" class="edu.cn.qdc.action.EditSubmitAction">
 			<result name="editSubmitSuccess">editSubmit.jsp</result>
 		</action>
-
 
 	</package>
 

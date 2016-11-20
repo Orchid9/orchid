@@ -8,6 +8,6 @@
 <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-	<h4><a href="authority">您没有权限，请点击返回</a></h4>
+	<h4><a href="show">您没有权限，请点击返回</a></h4>
 </body>
 </html>

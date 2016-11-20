@@ -12,7 +12,7 @@
     <div class="g-doc f-cb">
         <div class="user">
             卖家你好，<span class="name">mmmmm</span>！<a href="">[退出]</a>
-            请<a href="./login.jsp">[登录]</a>
+            请<a href="login">[登录]</a>
         </div>
         <ul class="nav">
             <li><a href="index">首页</a></li>
@@ -24,7 +24,7 @@
 <div class="g-doc">
     <div class="n-result">
         <h3>发布成功！</h3>
-        <p><a href="./show.jsp">[查看内容]</a><a href="./index.jsp">[返回首页]</a></p>
+        <p><a href="show">[查看内容]</a><a href="index">[返回首页]</a></p>
     </div>
 </div>
 <div class="n-foot">

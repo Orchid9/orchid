@@ -13,7 +13,7 @@
 		<div class="g-doc f-cb">
 			<div class="user">
 				买家你好，<span class="name">mmmmm</span>！<a href="">[退出]</a> 请<a
-					href="./login.html">[登录]</a>
+					href="login">[登录]</a>
 			</div>
 			<ul class="nav">
 				<li><a href="index">首页</a></li>
@@ -43,10 +43,10 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><a href="./show.html"><img
+					<td><a href="show"><img
 							src="http://nec.netease.com/img/s/1.jpg" alt=""></a></td>
 					<td><h4>
-							<a href="./show.html">内容名称</a>
+							<a href="show">内容名称</a>
 						</h4></td>
 					<td><span class="v-time">2016-03-12 12:12</span></td>
 					<td><span class="v-unit">¥</span><span class="value">123.9</span></td>
