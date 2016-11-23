@@ -1,0 +1,51 @@
+Bean 在 Spring Bean 应用上下文中的生命周期
+
+1. 实例化:(当我们的程序加载beans.xml文件)，把我们的bean(前提是scope=singleton)实例化到内存。
+2. 调用set方法设置属性。
+3. 如果你实现了bean名字关注接口(BeanNameAware),则可以通过setBeanName获取id号。
+4. 如果你实现了bean工厂关注接口，则BeanFactoryAware,则可以获取BeanFactory
+5. 如果你实现了ApplicationContextAware接口，则调用方法setApplicationContext，该方法传递ApplicationContext。
+6. 如果bean和一个后置处理器关联，则会自动调用public Object postProcessBeforeInitialization()方法。
+7. 如果你实现了InitializingBean接口，则会调用afterPropertiesSet方法
+8. 如果自己在<bean init-method="init"/>则你可以在bean中定义自己的初始化方法。
+9. 如果bean 和一个后知处理器关联，则会自动调用public Object postProcessAfterInitialization()方法。
+10.使用我们的bean
+11.容器关闭
+12.可以通过实现DisposableBean接口调用方法destory
+13.可以在<bean destory-method=""/>调用定制的销毁方法。
+
+小结: 我们实际开发过程中往往没用到这么多的过程，常见的是
+1->2->6->10->11
+
+处理结果:
+PersonService构造函数被调用
+setBeanName 被调用值为 personService
+setBeanFactory org.springframework.beans.factory.support.DefaultListableBeanFactory@234bef66: defining beans [personService,myBeanPostProcessor]; root of factory hierarchy
+setApplicationContext org.springframework.context.support.ClassPathXmlApplicationContext@4d405ef7: startup date [Wed Nov 23 21:28:10 CST 2016]; root of context hierarchy
+postProcessBeforeInitialization 被调用 
+edu.cn.service.PersonService@1e397ed7被创建的时间Wed Nov 23 21:28:10 CST 2016
+afterPropertiesSet 被调用
+我自己定义的init()方法
+postProcessAfterInitialization 被调用 
+hi Mr zhang
+
+
+Bean 在  Spring Bean 工厂中的生命周期。简单一些。
+1. 实例化:(当我们的程序加载beans.xml文件)，把我们的bean(前提是scope=singleton)实例化到内存。
+2. 调用set方法设置属性。
+3. 如果你实现了bean名字关注接口(BeanNameAware),则可以通过setBeanName获取id号。
+4. 如果你实现了bean工厂关注接口，则BeanFactoryAware,则可以获取BeanFactory
+5. 如果你实现了InitializingBean接口，则会调用afterPropertiesSet方法
+6. 如果自己在<bean init-method="init"/>则你可以在bean中定义自己的初始化方法。
+7. 如果bean 和一个后知处理器关联，则会自动调用public Object postProcessAfterInitialization()方法。
+8. 使用我们的bean
+9. 容器关闭
+10.可以通过实现DisposableBean接口调用方法destory
+11.可以在<bean destory-method=""/>调用定制的销毁方法。
+处理结果:
+PersonService构造函数被调用
+setBeanName 被调用值为 personService
+setBeanFactory org.springframework.beans.factory.support.DefaultListableBeanFactory@2c6a3f77: defining beans [personService,myBeanPostProcessor]; root of factory hierarchy
+afterPropertiesSet 被调用
+我自己定义的init()方法
+hi Mr zhang
