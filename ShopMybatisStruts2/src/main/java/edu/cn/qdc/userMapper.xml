@@ -3,6 +3,30 @@
 mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.cn.qdc.GetDataInf">
 
+	
+	<!-- 获取所有商品信息 -->
+	<select id="getContents"  resultMap="getContentss">
+		select * from content
+	</select>
+	<resultMap type="edu.cn.qdc.Contents" id="getContentss">
+			<result property="image" column="icon" />
+			<result property="summary" column="abstract" />
+			<result property="detail" column="text" />
+	</resultMap>
+	
+	<!-- 获取指定id的商品信息 -->
+	<select id="getContent"  resultMap="getContentss">
+		select * from content where id=#{id}
+	</select>
+	
+	<!-- 删除商品信息 -->
+	
+	<delete id="deleteContent" parameterType="edu.cn.qdc.action.DeleteContentsAvction"> 
+		delete from content where id = #{id}
+	</delete>
+	
+
+
 	<!-- 查询用户数据 -->
 	<select id="getUser" parameterType="String" resultMap="getUserr">
 		select username,password,userType from person where userName=#{0} and password=#{1}
@@ -23,8 +47,36 @@ mybatis.org/dtd/mybatis-3-mapper.dtd">
 	 <!-- 商家更新商品信息到数据库 -->
 	 <update id="updateContent" parameterType="edu.cn.qdc.Contents"> 
 		update content set price=#{price},title = #{title},icon = #{image},abstract = #{summary},text = #{detail}
-		 where icon = #{image}
+		 where id = #{id}
 	</update>
 	 
 	 
+	 <!-- 插入订单信息 -->
+	<insert id="addTrx" parameterType="edu.cn.qdc.Trx"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into trx(contentId,personId,price,time)values(#{contentId},#{personId},#{price},#{time})
+	</insert>
+	
+	<!-- 获取订单信息 -->
+	<select id="getTrx" resultMap="getTrx"> 
+			select * from trx t, content c where t.contentId=c.id 
+		</select>
+		<resultMap type="edu.cn.qdc.Trx" id="getTrx">
+			<id property="id" column="id" />
+			<result property="contentId" column="contentId" />
+			<result property="personId" column="personId" />
+			<result property="price" column="price" />
+			<result property="time" column="time" />
+			<association property="contents" javaType="edu.cn.qdc.Contents" column="contentId">
+				<id property="id" column="id" />
+				<result property="price" column="price" />
+				<result property="title" column="title" />
+				<result property="image" column="icon" />
+				<result property="summary" column="abstract" />
+				<result property="detail" column="text" />
+		    </association>
+		</resultMap>
+	
+	
+	
 </mapper>

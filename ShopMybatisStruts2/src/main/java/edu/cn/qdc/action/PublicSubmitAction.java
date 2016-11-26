@@ -10,12 +10,12 @@ import edu.cn.qdc.Contents;
 import edu.cn.qdc.GetDataInf;
 
 public class PublicSubmitAction {
-
+	
 	private String title;// 标题
 	private String summary; // 概要
 	private String image;
 	private String detail; // 正文
-	private String price;
+	private double price;
 
 	public String getTitle() {
 		return title;
@@ -49,11 +49,11 @@ public class PublicSubmitAction {
 		this.detail = detail;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -71,6 +71,5 @@ public class PublicSubmitAction {
 			session.close();
 		}
 	}
-	
 	
 }

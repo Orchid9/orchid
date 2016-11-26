@@ -5,14 +5,53 @@
 
 <struts>
 	<package name="lold" extends="struts-default">
+	
+		<action name="account" class="edu.cn.qdc.action.AccountAction">
+			<result name="accountSuccess">account.jsp</result>
+			<result name="accountError">authority.jsp</result>
+			<result name="pleaselogin">login.jsp</result>
+		</action>
 
+		<action name="buy" class="edu.cn.qdc.action.BuyAction">
+			<result name="buySuccess">index.jsp</result>
+			<result name="buyError">authority.jsp</result>
+			<result name="pleaselogin">login.jsp</result>
+		</action>
+		
+		
+		<action name="index" class="edu.cn.qdc.action.getContentsAvction">
+			<result name="getContentsAvctionSuccess">index.jsp</result>
+		</action>
+		
+		<action name="delete" class="edu.cn.qdc.action.DeleteContentsAvction">
+			<result name="deleteSuccess" type="chain">index</result>
+		</action>
+		
+		<action name="show" class="edu.cn.qdc.action.ShowAction">
+			<result name="ShowActionSuccess" >show.jsp</result>
+		</action>
+		
 		<!-- *包含了public、index、account、show -->
 		<action name="*">
 			<result>{1}.jsp</result>
 		</action>
-
+		
+		<!-- <action name="authority">
+			<result>index.jsp</result>
+		</action> -->
+		
+		
+		<action name="public" class="edu.cn.qdc.action.PublicAction">
+			<result name="pleaselogin" >login.jsp</result>
+			<result name="publicSuccess">public.jsp</result>
+			<result name="publicError" >authority.jsp</result>
+		</action>
+		
+		
 		<action name="publicSubmit" class="edu.cn.qdc.action.PublicSubmitAction">
 			<result name="publicSubmitSuccess">publicSubmit.jsp</result>
+			<result name="publicSubmitError">authority.jsp</result>
+			<result name="pleaselogin">login.jsp</result>
 		</action>
 
 		<action name="login" class="edu.cn.qdc.action.LoginAction">
@@ -23,6 +62,7 @@
 		<action name="edit" class="edu.cn.qdc.action.EditAction">
 			<result name="editsuccess">edit.jsp</result>
 			<result name="editerror">authority.jsp</result>
+			<result name="pleaselogin">login.jsp</result>
 		</action>
 
 		<action name="editSubmit" class="edu.cn.qdc.action.EditSubmitAction">

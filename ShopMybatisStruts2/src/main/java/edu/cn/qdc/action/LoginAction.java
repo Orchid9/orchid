@@ -43,9 +43,11 @@ public class LoginAction {
 			boolean b=user != null;
 			if(b){
 				//将验证已经存在的用户username的值赋给sessionMap,作为全局session
-				Map<String,Object> sessionMap=(Map) ActionContext.getContext().getSession();
+				ActionContext actioncontext = ActionContext.getContext();
+				Map<String, Object> sessionMap = actioncontext.getSession();
 				sessionMap.clear();
 				sessionMap.put("username", user.getUsername());
+				sessionMap.put("userid", user.getId());
 				return "querysuccess";
 			}else {
 				return "queryerror";

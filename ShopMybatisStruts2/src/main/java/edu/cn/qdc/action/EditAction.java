@@ -26,6 +26,9 @@ public class EditAction {
 			User user=null;
 			user = userInfo.getUser(username);
 			System.out.println(user);
+			if(user==null){
+				return "pleaselogin";
+			}else{
 			String s=String.valueOf(user.getUsertype());
 			/*System.out.println(s);
 			String a="1";
@@ -35,6 +38,7 @@ public class EditAction {
 				return "editsuccess";
 			}else {
 				return "editerror";
+			}
 			}
 		} finally {
 			session.close();

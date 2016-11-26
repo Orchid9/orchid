@@ -1,21 +1,26 @@
 package edu.cn.qdc.action;
 
 import java.io.InputStream;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.opensymphony.xwork2.ActionContext;
 
 import edu.cn.qdc.Contents;
 import edu.cn.qdc.GetDataInf;
 
 public class EditSubmitAction {
-
+	
 	private String title;// 标题
 	private String summary; // 概要
 	private String image;
 	private String detail; // 正文
-	private String price;
-
+	private double price;
+	private Contents content;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -48,11 +53,11 @@ public class EditSubmitAction {
 		this.detail = detail;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -63,8 +68,11 @@ public class EditSubmitAction {
 		SqlSession session = sessionFactory.openSession(true);
 		try {
 			GetDataInf getContentInfo = session.getMapper(GetDataInf.class);
-			getContentInfo.updateContent(new Contents(price, title, image, summary, detail));
-			System.out.println(new Contents(price, title, image, summary, detail));
+			ActionContext actioncontext = ActionContext.getContext();
+			Map<String, Object> application = actioncontext.getApplication();
+			content=(Contents) application.get("content");
+			getContentInfo.updateContent(new Contents(content.getId(),price, title, image, summary, detail));
+			System.out.println(new Contents(content.getId(),price, title, image, summary, detail));
 			return "editSubmitSuccess";
 		} finally {
 			session.close();

@@ -38,10 +38,10 @@
                     <input class="u-ipt ipt" name="summary" placeholder="2-140字符"/> 
                 </div>
             </div>
-            <div class="fmitem">
+             <div class="fmitem">
                 <label class="fmlab">图片：</label>
                 <div class="fmipt">
-                    <input class="u-ipt ipt" name="image" placeholder="图片地址"/>
+                    <input class="u-ipt ipt" name="image" placeholder="图片地址"/> 
                 </div>
             </div>
             <div class="fmitem">
@@ -58,7 +58,7 @@
             </div>
             <div class="fmitem fmitem-nolab fmitem-btn">
                 <div class="fmipt">
-                    <button type="submit" class="u-btn u-btn-primary u-btn-lg">发 布</button>
+                    <button type="submit" class="u-btn u-btn-primary u-btn-lg" onclick="javaScript:alert('发布完成!')">发 布</button>
                 </div>
             </div>
         </form>

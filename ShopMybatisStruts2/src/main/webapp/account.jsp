@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,24 +43,27 @@
 				</tr>
 			</thead>
 			<tbody>
+				<s:iterator var="trxs" value="#session.trx">
 				<tr>
 					<td><a href="show"><img
-							src="http://nec.netease.com/img/s/1.jpg" alt=""></a></td>
+							src="<s:property value="#trxs.contents.image"/>" alt=""></a></td>
 					<td><h4>
-							<a href="show">内容名称</a>
+							<a href="show"><s:property value="#trxs.contents.title"/></a>
 						</h4></td>
-					<td><span class="v-time">2016-03-12 12:12</span></td>
-					<td><span class="v-unit">¥</span><span class="value">123.9</span></td>
+					<td><span class="v-time"><s:property value="#trxs.time"/></span></td>
+					<td><span class="v-unit">¥</span><span class="value"><s:property value="#trxs.contents.price"/></span></td>
 				</tr>
+					</s:iterator>
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="3"><div class="total">总计：</div></td>
-					<td><span class="v-unit">¥</span><span class="value">123.9</span></td>
+					<td><span class="v-unit">¥</span><span class="value"><s:property value="#session.sum"/></span></td>
 				</tr>
 			</tfoot>
 		</table>
 	</div>
+	<s:debug></s:debug>
 	<div class="n-foot">
 		<p>
 			版权所有：网易云课堂<a

@@ -2,14 +2,25 @@ package edu.cn.qdc;
 
 public class Contents {
 
-	private String price;
+	private int id;
+	private double price;
 	private String title;// 标题
 	private String image;
 	private String summary; // 概要
 	private String detail; // 正文
 
-	public Contents(String price, String title, String image, String summary, String detail) {
+	public Contents(double price, String title, String image, String summary, String detail) {
 		super();
+		this.price = price;
+		this.title = title;
+		this.image = image;
+		this.summary = summary;
+		this.detail = detail;
+	}
+
+	public Contents(int id, double price, String title, String image, String summary, String detail) {
+		super();
+		this.id = id;
 		this.price = price;
 		this.title = title;
 		this.image = image;
@@ -23,8 +34,8 @@ public class Contents {
 
 	@Override
 	public String toString() {
-		return "Content [title=" + title + ", summary=" + summary + ", image=" + image + ", detail=" + detail
-				+ ", price=" + price + "]";
+		return "Contents [id=" + id + ", price=" + price + ", title=" + title + ", image=" + image + ", summary="
+				+ summary + ", detail=" + detail + "]";
 	}
 
 	public String getTitle() {
@@ -59,12 +70,20 @@ public class Contents {
 		this.detail = detail;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
