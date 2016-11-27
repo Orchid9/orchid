@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-3.1.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	<!-- 引入我们的db.properties -->
+	<context:property-placeholder location="classpath:edu/cn/dispatch/db.properties,classpath:edu/cn/dispatch/db2.properties" />
+	<!-- 配置一个DBUtil对象 $占位符 -->
+	
+	<bean id="dbutil" class="edu.cn.dispatch.DBUtil">
+		<property name="driver" value="${driver}"/>
+		<property name="username" value="${username}"/>
+		<property name="url" value="${url}"/>
+		<property name="password" value="${password}"/>
+	</bean>
+	
+	<!-- 配置多个DBUtil对象，若名字相同，后面的会覆盖前面的 -->	
+	<bean id="dbutil2" class="edu.cn.dispatch.DBUtil">
+		<property name="driver" value="${driver}"/>
+		<property name="username" value="${username2}"/>
+		<property name="url" value="${url2}"/>
+		<property name="password" value="${password2}"/>
+	</bean>
+	
+	
+	
+</beans>

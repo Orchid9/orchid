@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-3.1.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	<!-- 配置一个master对象 -->
+	<!-- autowire="constructor"
+		Mater类中得写
+		public Master(Dog dog){
+		System.out.println("调用Master构造函数Master(Dog dog)");
+		this.dog=dog;
+		}
+		<bean id="master" class="edu.cn.autowire.Master" autowire="constructor">
+		<property name="name" value="小白"/>
+		 -->
+		<!-- 传统set -->
+		<!--autowire="byName"根据对象类型找，  -->
+		<!-- <bean id="master" class="edu.cn.autowire.Master" autowire="byType">
+		<property name="name" value="小白"/> -->
+		
+		<!--autowire="byName"根据名字找  -->
+	<bean id="master" class="edu.cn.autowire.Master" autowire="byName">
+		<property name="name" value="小白"/>
+	<!-- <property name="dog" ref="dog" /> -->
+	</bean>
+	<!-- 配置一个dog对象 -->
+	<bean id="dog" class="edu.cn.autowire.Dog">
+		<property name="name" value="小花" />
+		<property name="age" value="1" />
+	</bean>
+	
+	
+</beans>
