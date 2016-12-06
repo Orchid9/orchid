@@ -1,0 +1,44 @@
+1. SpringAop
+
+1). 加入 jar 包
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.8</version>
+		</dependency>
+
+2). 在配置文件中加入 aop 的命名空间
+
+3). 给予注解的方式
+
+①. 在配置文件中加入如下配置:
+<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+②. 把横切关注点的代码抽象到类中
+i.  切面首先是一个IOC 中的 bean , 即加入 @Component 注解
+ii. 切面还需要加入 @Aspect 注解
+③. 在类中声明各种通知:
+
+i.  声明一个方法
+ii. 在方法前加入 @Before 注解
+
+④. 可以在通知方法中声明一个类型为 JoinPoint 的参数。 然后就能访问链接细节。如方法名称和参数值。
+
+@Aspect
+@Component
+public class LoggingAspect {
+	
+	//声明该方法是一个前置通知: 在目标方法开始之前执行
+	@Before("execution(public int spring.aop.impl.ArithmeticCalculator.*(int, int))")
+	public void beforeMethod(JoinPoint joinPoint){
+		String methodName=joinPoint.getSignature().getName();
+		List<Object> args=Arrays.asList(joinPoint.getArgs());
+		System.out.println("The method "+methodName+" begins with "+args);
+	}
